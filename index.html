@@ -275,7 +275,9 @@ body{font-family:'Noto Sans KR',sans-serif;background:#f5f4f0;color:#1c1c1c;}
             <div class="dopt-sub">레이저 총게임 · 점심</div>
             <div class="dopt-sub">쿠킹클래스</div>
           </div>
+
         </div>
+        <div style="font-size:11px;color:#a0998a;margin-top:8px;line-height:1.6;">*부분참석, 불참은 보험서비스팀 배정민 사원에게 즉시 연락 부탁드립니다.</div>
       </div>
       <div class="fgroup">
         <label class="flabel">연락처</label>
@@ -285,7 +287,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:#f5f4f0;color:#1c1c1c;}
         <label class="flabel">비고 (선택)</label>
         <input type="text" class="finput" id="f-note" placeholder="알레르기, 기타 요청사항 등">
       </div>
-      <button class="submit" onclick="submitForm()">신청 완료하기 →</button>
+      <button class="submit" onclick="goToForm()">신청 완료하기 →</button>
       <div class="form-note">신청 후 담당자가 확인 연락드립니다.</div>
     </div>
     <div class="success" id="success-wrap">
@@ -308,20 +310,16 @@ function selectDay(id){
   ['d1','d2','d3'].forEach(d=>document.getElementById(d).classList.remove('on'));
   document.getElementById(id).classList.add('on');
 }
-function submitForm(){
+function goToForm(){
   const name=document.getElementById('f-name').value.trim();
   const dept=document.getElementById('f-dept').value.trim();
   const phone=document.getElementById('f-phone').value.trim();
   const sel=['d1','d2','d3'].find(d=>document.getElementById(d).classList.contains('on'));
   if(!name){alert('이름을 입력해 주세요.');return;}
-  if(!dept){alert('부서를 입력해 주세요.');return;}
+  if(!dept){alert('파트를 입력해 주세요.');return;}
   if(!sel){alert('희망 날짜를 선택해 주세요.');return;}
   if(!phone){alert('연락처를 입력해 주세요.');return;}
-  document.getElementById('form-wrap').style.display='none';
-  document.getElementById('success-wrap').style.display='block';
-  const map={d1:'4월 21일 (혜화 · 공방 & 연극)',d2:'4월 22일 (혜화 · 연극 & 볼링 & 만찬)',d3:'4월 23일 (홍대 · 레이저 & 다이닝 & 쿠킹)'};
-  document.getElementById('s-name').textContent=name+'님, 신청 완료!';
-  document.getElementById('s-msg').innerHTML=`선택 일정: <strong>${map[sel]}</strong><br><br>담당자 확인 후 연락드릴 예정입니다.<br>원팀 플러스 데이에서 만나요 🎉`;
+  window.open('https://forms.gle/MJFvp3ec8xvFnnWC9','_blank');
 }
 </script>
 </body>
