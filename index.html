@@ -21,18 +21,37 @@ body{font-family:'Noto Sans KR',sans-serif;background:#f4f6f9;color:#333;}
 .hero-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;position:relative;z-index:1;}
 .pill{font-size:12px;color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:20px;padding:5px 14px;background:rgba(255,255,255,.15);}
 
-.tabs{display:flex;background:#fff;border-bottom:1px solid #e8edf2;position:sticky;top:0;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,.06);}
-.tab{flex:1;padding:14px 0;text-align:center;font-size:13px;font-weight:500;color:#999;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;}
-.tab.active{color:#e8601c;border-bottom:2px solid #e8601c;}
+.hype-bar{background:#fff;border-bottom:1px solid #f0e8e0;padding:10px 0;overflow:hidden;}
+.hype-scroll{display:flex;gap:24px;animation:hscroll 18s linear infinite;white-space:nowrap;}
+.hype-item{font-size:12px;font-weight:600;color:#e8601c;display:inline-flex;align-items:center;gap:6px;}
+.hype-item::before{content:'🔥';}
+@keyframes hscroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+.tabs{display:flex;background:#fff;border-bottom:2px solid #e8601c;position:sticky;top:0;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.tab{flex:1;padding:14px 0;text-align:center;font-size:13px;font-weight:600;color:#e8601c;letter-spacing:.04em;}
 
 .pane{display:none;padding:20px 16px;}
 .pane.active{display:block;}
+
+.event-banner{border-radius:16px;overflow:hidden;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);padding:20px;position:relative;margin-bottom:16px;}
+.event-banner::before{display:none;}
+.event-tag{font-size:9px;letter-spacing:.18em;color:#ff9d4d;font-weight:700;text-transform:uppercase;margin-bottom:8px;}
+.event-title{font-size:17px;font-weight:700;color:#fff;line-height:1.4;margin-bottom:6px;}
+.event-title span{color:#ffd166;}
+.event-desc{font-size:12px;color:rgba(255,255,255,.6);line-height:1.6;margin-bottom:14px;}
+.event-cta{display:inline-flex;align-items:center;gap:6px;background:#e8601c;color:#fff;font-size:12px;font-weight:700;border-radius:8px;padding:8px 16px;text-decoration:none;letter-spacing:.02em;}
+.event-dots{display:flex;gap:6px;margin-top:14px;}
+.event-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.2);}
+.event-dot.on{background:#ff9d4d;width:18px;border-radius:3px;}
 
 .day-card{background:#fff;border-radius:16px;overflow:hidden;margin-bottom:16px;border:1px solid #e8edf2;box-shadow:0 2px 12px rgba(0,0,0,.05);}
 .day-head{display:flex;flex-direction:column;}
 .day-head-top{display:flex;align-items:center;justify-content:space-between;padding:16px 20px 0;}
 .day-num{font-size:10px;letter-spacing:.14em;color:#e8601c;text-transform:uppercase;font-weight:700;margin-bottom:3px;}
 .day-title{font-size:18px;font-weight:700;color:#222;margin-bottom:14px;}
+.day-cap{display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#e8601c,#f07c3a);border-radius:12px;padding:8px 14px;white-space:nowrap;box-shadow:0 3px 10px rgba(232,96,28,.3);}
+.day-cap-label{font-size:9px;letter-spacing:.12em;color:rgba(255,255,255,.8);font-weight:600;text-transform:uppercase;margin-bottom:2px;}
+.day-cap-num{font-size:18px;font-weight:700;color:#fff;line-height:1;}
 .day-loc-bar{display:flex;align-items:center;gap:8px;padding:10px 20px;background:#fff5f0;border-top:1px solid #fde5d8;border-bottom:1px solid #fde5d8;}
 .loc-pin{font-size:14px;}
 .loc-label{font-size:11px;color:#e8601c;font-weight:500;letter-spacing:.05em;}
@@ -48,29 +67,42 @@ body{font-family:'Noto Sans KR',sans-serif;background:#f4f6f9;color:#333;}
 .prog-link:hover{background:#fde8d8;}
 .prog-link svg{width:10px;height:10px;opacity:.8;}
 
+/* MAIN 행 강조 */
+.prog.main-row{background:linear-gradient(135deg,#f0f4ff,#e8eeff);margin:0 -20px;padding:14px 20px;border-left:3px solid #4f6ef7;border-bottom:1px solid #dce4fd;}
+.prog.main-row .prog-time{color:#4f6ef7;}
+.prog.main-row .prog-name{font-size:15px;color:#2d3db5;}
+.split-prog.main-row{background:linear-gradient(135deg,#f0f4ff,#e8eeff);margin:0 -20px;padding:14px 20px;border-left:3px solid #4f6ef7;border-bottom:1px solid #dce4fd;}
+.split-prog.main-row .split-time{color:#4f6ef7;}
+.split-prog.main-row .split-label{color:#4f6ef7;}
+.main-badge{display:inline-flex;align-items:center;gap:4px;background:linear-gradient(90deg,#4f6ef7,#7c3aed);color:#fff;font-size:9px;font-weight:700;letter-spacing:.08em;border-radius:4px;padding:3px 8px;margin-bottom:5px;box-shadow:0 2px 6px rgba(79,110,247,.3);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{box-shadow:0 2px 6px rgba(79,110,247,.3);}50%{box-shadow:0 2px 12px rgba(79,110,247,.5);}}
+
+/* 분반 슬롯 */
+.split-prog{display:grid;grid-template-columns:44px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid #f0f3f7;}
+.split-prog:last-child{border-bottom:none;}
+.split-time{font-size:12px;color:#e8601c;font-weight:600;padding-top:2px;}
+.split-label{font-size:10px;letter-spacing:.12em;color:#e8601c;font-weight:700;text-transform:uppercase;margin-bottom:8px;}
+.split-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.split-card{border-radius:10px;padding:11px 12px;border:1px solid;}
+.split-card.a{background:#fff8f4;border-color:#fddece;}
+.split-card.b{background:#f3f8ff;border-color:#c8dff8;}
+.split-badge{font-size:10px;font-weight:700;letter-spacing:.06em;border-radius:4px;padding:2px 7px;display:inline-block;margin-bottom:7px;}
+.split-card.a .split-badge{background:#fde5d0;color:#c94e12;}
+.split-card.b .split-badge{background:#dbeafe;color:#1d6fb8;}
+.split-card-name{font-size:12px;font-weight:700;color:#2c2c2c;line-height:1.4;margin-bottom:4px;}
+.split-card-desc{font-size:11px;color:#999;line-height:1.5;margin-bottom:8px;}
+.split-count{font-size:11px;font-weight:600;margin-bottom:8px;}
+.split-card.a .split-count{color:#c94e12;}
+.split-card.b .split-count{color:#1d6fb8;}
+.split-link{display:inline-flex;align-items:center;gap:4px;font-size:10px;border-radius:5px;padding:4px 9px;text-decoration:none;transition:background .15s;font-weight:500;border:1px solid;}
+.split-card.a .split-link{color:#e8601c;background:#fff;border-color:#fddece;}
+.split-card.a .split-link:hover{background:#fde8d8;}
+.split-card.b .split-link{color:#1d6fb8;background:#fff;border-color:#c8dff8;}
+.split-card.b .split-link:hover{background:#dbeafe;}
+.split-link svg{width:9px;height:9px;opacity:.8;}
+
 .parking{display:flex;align-items:center;gap:6px;margin:4px 20px 16px;padding:10px 14px;background:#f4f6f9;border-radius:8px;font-size:11px;color:#999;border:1px solid #e8edf2;}
 .parking svg{width:12px;height:12px;flex-shrink:0;opacity:.5;}
-
-.form-title{font-size:11px;letter-spacing:.12em;color:#e8601c;text-transform:uppercase;margin-bottom:18px;font-weight:700;}
-.fgroup{margin-bottom:14px;}
-.flabel{font-size:12px;font-weight:600;color:#555;display:block;margin-bottom:7px;}
-.finput{width:100%;border:1px solid #dde3ea;border-radius:10px;padding:12px 15px;font-size:14px;font-family:'Noto Sans KR',sans-serif;color:#333;background:#fff;outline:none;transition:border-color .2s;}
-.finput:focus{border-color:#e8601c;box-shadow:0 0 0 3px rgba(232,96,28,.1);}
-.day-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
-.dopt{border:1px solid #dde3ea;border-radius:10px;padding:12px 6px;text-align:center;cursor:pointer;transition:all .2s;background:#fff;}
-.dopt:hover{border-color:#e8601c;}
-.dopt.on{border-color:#e8601c;background:#fff5f0;}
-.dopt-date{font-size:11px;font-weight:600;color:#555;}
-.dopt-sub{font-size:10px;color:#bbb;margin-top:3px;line-height:1.4;}
-.dopt.on .dopt-date{color:#e8601c;}
-.dopt.on .dopt-sub{color:#f0a070;}
-.submit{width:100%;background:#e8601c;color:#fff;border:none;border-radius:12px;padding:15px;font-size:15px;font-weight:700;font-family:'Noto Sans KR',sans-serif;cursor:pointer;margin-top:12px;transition:background .2s;letter-spacing:.02em;}
-.submit:hover{background:#d05518;}
-.form-note{font-size:11px;color:#aaa;line-height:1.75;margin-top:12px;padding:12px 14px;background:#f8f9fb;border-radius:10px;border:1px solid #e8edf2;}
-.success{display:none;text-align:center;padding:56px 20px;}
-.s-icon{width:60px;height:60px;background:#fff5f0;border:2px solid #fddece;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;color:#e8601c;font-size:24px;}
-.s-title{font-size:22px;font-weight:700;color:#2c2c2c;margin-bottom:10px;}
-.s-msg{font-size:13px;color:#888;line-height:1.75;}
 </style>
 </head>
 <body>
@@ -87,12 +119,46 @@ body{font-family:'Noto Sans KR',sans-serif;background:#f4f6f9;color:#333;}
     </div>
   </div>
 
+  <div class="hype-bar">
+    <div class="hype-scroll">
+      <div class="hype-item">지금 바로 신청하세요</div>
+      <div class="hype-item">선착순 마감</div>
+      <div class="hype-item">특별 이벤트 준비 중</div>
+      <div class="hype-item">4월 21 · 22 · 23일</div>
+      <div class="hype-item">지금 바로 신청하세요</div>
+      <div class="hype-item">선착순 마감</div>
+      <div class="hype-item">특별 이벤트 준비 중</div>
+      <div class="hype-item">4월 21 · 22 · 23일</div>
+    </div>
+  </div>
+
   <div class="tabs">
-    <div class="tab active" onclick="switchTab('schedule')">일정 안내</div>
-    <div class="tab" onclick="switchTab('apply')">참가 신청</div>
+    <div class="tab">일정 안내</div>
   </div>
 
   <div class="pane active" id="pane-schedule">
+
+    <div class="event-banner">
+      <div class="event-tag">✦ Special Event</div>
+      <div class="event-title">제대로 즐기면 <span>소정의 상품이?! 🎁</span></div>
+      <div class="event-desc">각 일정마다 특별 이벤트가 준비되어 있어요 👀</div>
+      <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:14px;">
+        <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,.85);">
+          <span style="background:rgba(255,255,255,.12);border-radius:6px;padding:3px 8px;font-size:10px;font-weight:700;color:#ff9d4d;white-space:nowrap;">DAY 1</span>
+          🎯 당일 미션 완료자 1인
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,.85);">
+          <span style="background:rgba(255,255,255,.12);border-radius:6px;padding:3px 8px;font-size:10px;font-weight:700;color:#ff9d4d;white-space:nowrap;">DAY 2</span>
+          🎳 볼링 1등 팀 1인
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,.85);">
+          <span style="background:rgba(255,255,255,.12);border-radius:6px;padding:3px 8px;font-size:10px;font-weight:700;color:#ff9d4d;white-space:nowrap;">DAY 3</span>
+          🔫 레이저게임 1등 팀 1인
+        </div>
+      </div>
+      <div class="event-cta" style="display:none;"></div>
+      <div class="event-dots" style="display:none;"></div>
+    </div>
 
     <!-- DAY 1 -->
     <div class="day-card">
@@ -102,11 +168,13 @@ body{font-family:'Noto Sans KR',sans-serif;background:#f4f6f9;color:#333;}
             <div class="day-num">Day 1</div>
             <div class="day-title">4월 21일 (화)</div>
           </div>
+          <div class="day-cap"><div class="day-cap-label">정원</div><div class="day-cap-num">19명</div></div>
         </div>
         <div class="day-loc-bar">
           <span class="loc-pin">📍</span>
           <span class="loc-label">장소&nbsp;</span>
           <span class="loc-name">혜화</span>
+          <span style="margin-left:auto;font-size:10px;font-weight:600;color:#7c3aed;background:#f3eeff;border:1px solid #ddd6fe;border-radius:20px;padding:3px 9px;white-space:nowrap;">🎯 미션 이벤트</span>
         </div>
       </div>
       <div class="prog-list">
@@ -114,22 +182,40 @@ body{font-family:'Noto Sans KR',sans-serif;background:#f4f6f9;color:#333;}
           <div class="prog-time">11:00</div>
           <div>
             <div class="prog-name">점심 · 서래향 대학로점</div>
-            <div class="prog-desc">런치 코스 A</div>
+            <div class="prog-desc">런치 코스</div>
             <a class="prog-link" href="https://naver.me/FO9oEKCc" target="_blank">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
               네이버 지도
             </a>
           </div>
         </div>
-        <div class="prog">
-          <div class="prog-time">13:00</div>
+        <div class="split-prog main-row">
+          <div class="split-time">13:00</div>
           <div>
-            <div class="prog-name">클래스 · 퍼퓸 핸드크림 만들기</div>
-            <div class="prog-desc">핸드크림 10ml + 향수 50g · 2시간 · 최대 13명</div>
-            <a class="prog-link" href="https://naver.me/5jJTk4Nb" target="_blank">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              클래스 보기
-            </a>
+            <div class="main-badge">⭐ MAIN PROGRAM</div>
+            <div class="split-label">2조로 나눠서 진행</div>
+            <div class="split-grid">
+              <div class="split-card a">
+                <div class="split-badge">A조</div>
+                <div class="split-card-name">퍼퓸<br>핸드크림 만들기</div>
+                <div class="split-card-desc">핸드크림 10ml + 향수 50g</div>
+                <div class="split-count">9명</div>
+                <a class="split-link" href="https://naver.me/5jJTk4Nb" target="_blank">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  클래스 보기
+                </a>
+              </div>
+              <div class="split-card b">
+                <div class="split-badge">B조</div>
+                <div class="split-card-name">베이킹<br>클래스</div>
+                <div class="split-card-desc">휘낭시에 등 베이킹</div>
+                <div class="split-count">10명</div>
+                <a class="split-link" href="https://naver.me/FlBheYno" target="_blank">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  클래스 보기
+                </a>
+              </div>
+            </div>
           </div>
         </div>
         <div class="prog">
@@ -158,11 +244,13 @@ body{font-family:'Noto Sans KR',sans-serif;background:#f4f6f9;color:#333;}
             <div class="day-num">Day 2</div>
             <div class="day-title">4월 22일 (수)</div>
           </div>
+          <div class="day-cap"><div class="day-cap-label">정원</div><div class="day-cap-num">13명</div></div>
         </div>
         <div class="day-loc-bar">
           <span class="loc-pin">📍</span>
           <span class="loc-label">장소&nbsp;</span>
           <span class="loc-name">혜화</span>
+          <span style="margin-left:auto;font-size:10px;font-weight:600;color:#7c3aed;background:#f3eeff;border:1px solid #ddd6fe;border-radius:20px;padding:3px 9px;white-space:nowrap;">🎳 볼링 1등 이벤트</span>
         </div>
       </div>
       <div class="prog-list">
@@ -181,7 +269,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:#f4f6f9;color:#333;}
           <div class="prog-time">13:30</div>
           <div>
             <div class="prog-name">연극 · 죽여주는 이야기</div>
-            <div class="prog-desc">90분 공연</div>
+            <div class="prog-desc">연극 관람</div>
             <a class="prog-link" href="https://timeticket.co.kr/product/5150" target="_blank">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
               연극 상세
@@ -199,9 +287,10 @@ body{font-family:'Noto Sans KR',sans-serif;background:#f4f6f9;color:#333;}
             </a>
           </div>
         </div>
-        <div class="prog">
+        <div class="prog main-row">
           <div class="prog-time">16:00</div>
           <div>
+            <div class="main-badge">⭐ MAIN PROGRAM</div>
             <div class="prog-name">저녁 · 구룡관 중식 코스요리</div>
             <div class="prog-desc">음료 1인 2병</div>
             <a class="prog-link" href="https://naver.me/xNLZYToZ" target="_blank">
@@ -225,11 +314,13 @@ body{font-family:'Noto Sans KR',sans-serif;background:#f4f6f9;color:#333;}
             <div class="day-num">Day 3</div>
             <div class="day-title">4월 23일 (목)</div>
           </div>
+          <div class="day-cap"><div class="day-cap-label">정원</div><div class="day-cap-num">12명</div></div>
         </div>
         <div class="day-loc-bar">
           <span class="loc-pin">📍</span>
           <span class="loc-label">장소&nbsp;</span>
           <span class="loc-name">홍대</span>
+          <span style="margin-left:auto;font-size:10px;font-weight:600;color:#7c3aed;background:#f3eeff;border:1px solid #ddd6fe;border-radius:20px;padding:3px 9px;white-space:nowrap;">🔫 레이저 1등 이벤트</span>
         </div>
       </div>
       <div class="prog-list">
@@ -237,7 +328,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:#f4f6f9;color:#333;}
           <div class="prog-time">11:00</div>
           <div>
             <div class="prog-name">레이저 총게임 · 레이저아레나</div>
-            <div class="prog-desc">2게임 · 약 50분</div>
+            <div class="prog-desc">레이저 총게임</div>
             <a class="prog-link" href="https://naver.me/xAFCYKOC" target="_blank">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
               네이버 지도
@@ -255,11 +346,12 @@ body{font-family:'Noto Sans KR',sans-serif;background:#f4f6f9;color:#333;}
             </a>
           </div>
         </div>
-        <div class="prog">
+        <div class="prog main-row">
           <div class="prog-time">15:30</div>
           <div>
+            <div class="main-badge">⭐ MAIN PROGRAM</div>
             <div class="prog-name">클래스 · 르뱅 쿠킹클래스</div>
-            <div class="prog-desc">헬로스푼 요리·베이킹 공방 · 약 1시간 30분</div>
+            <div class="prog-desc">헬로스푼 요리·베이킹 공방</div>
             <a class="prog-link" href="https://naver.me/FoIaT9sP" target="_blank">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
               클래스 보기
@@ -275,78 +367,13 @@ body{font-family:'Noto Sans KR',sans-serif;background:#f4f6f9;color:#333;}
 
   </div>
 
-  <!-- APPLY -->
-  <div class="pane" id="pane-apply">
-    <div id="form-wrap">
-      <div class="form-title">참가 신청</div>
-      <div class="fgroup">
-        <label class="flabel">이름</label>
-        <input type="text" class="finput" id="f-name" placeholder="홍길동">
-      </div>
-      <div class="fgroup">
-        <label class="flabel">파트</label>
-        <input type="text" class="finput" id="f-dept" placeholder="소속 파트를 입력하세요">
-      </div>
-      <div class="fgroup">
-        <label class="flabel">희망 날짜 (택 1)</label>
-        <div class="day-grid">
-          <div class="dopt" id="d1" onclick="selectDay('d1')">
-            <div class="dopt-date">4/21 (화) · 혜화</div>
-            <div class="dopt-sub">점심 · 퍼퓸 핸드크림 · 연극</div>
-          </div>
-          <div class="dopt" id="d2" onclick="selectDay('d2')">
-            <div class="dopt-date">4/22 (수) · 혜화</div>
-            <div class="dopt-sub">산책 · 연극 · 볼링 · 저녁</div>
-          </div>
-          <div class="dopt" id="d3" onclick="selectDay('d3')">
-            <div class="dopt-date">4/23 (목) · 홍대</div>
-            <div class="dopt-sub">레이저 총게임 · 점심 · 쿠킹클래스</div>
-          </div>
-        </div>
-        <div style="font-size:11px;color:#c94e12;margin-top:9px;line-height:1.65;padding:10px 13px;background:#fff8f4;border-radius:8px;border:1px solid #fddece;">*부분참석, 불참은 보험서비스팀 배정민 사원에게 즉시 연락 부탁드립니다.</div>
-      </div>
-      <div class="fgroup">
-        <label class="flabel">연락처</label>
-        <input type="tel" class="finput" id="f-phone" placeholder="010-0000-0000">
-      </div>
-      <div class="fgroup">
-        <label class="flabel">비고 (선택)</label>
-        <input type="text" class="finput" id="f-note" placeholder="알레르기, 기타 요청사항 등">
-      </div>
-      <button class="submit" onclick="goToForm()">신청 완료하기 →</button>
-      <div class="form-note">신청 후 담당자가 확인 연락드립니다.</div>
-    </div>
-    <div class="success" id="success-wrap">
-      <div class="s-icon">✓</div>
-      <div class="s-title">신청 완료!</div>
-      <div class="s-msg">원팀 플러스 데이에서 만나요 🎉</div>
+  <!-- 하단 고정 버튼 -->
+  <div style="position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 16px 20px;background:linear-gradient(to top,#fff 60%,rgba(255,255,255,0));max-width:460px;margin:0 auto;">
+    <div style="background:linear-gradient(135deg,#e8601c,#f07c3a);border-radius:14px;padding:15px 20px;text-align:center;box-shadow:0 4px 20px rgba(232,96,28,.4);">
+      <div style="font-size:15px;font-weight:700;color:#fff;">📝 지금 바로 메일 내 링크로 신청해 주세요!</div>
     </div>
   </div>
 
 </div>
-<script>
-function switchTab(t){
-  document.querySelectorAll('.tab').forEach((el,i)=>{
-    el.classList.toggle('active',(i===0&&t==='schedule')||(i===1&&t==='apply'));
-  });
-  document.getElementById('pane-schedule').classList.toggle('active',t==='schedule');
-  document.getElementById('pane-apply').classList.toggle('active',t==='apply');
-}
-function selectDay(id){
-  ['d1','d2','d3'].forEach(d=>document.getElementById(d).classList.remove('on'));
-  document.getElementById(id).classList.add('on');
-}
-function goToForm(){
-  const name=document.getElementById('f-name').value.trim();
-  const dept=document.getElementById('f-dept').value.trim();
-  const phone=document.getElementById('f-phone').value.trim();
-  const sel=['d1','d2','d3'].find(d=>document.getElementById(d).classList.contains('on'));
-  if(!name){alert('이름을 입력해 주세요.');return;}
-  if(!dept){alert('파트를 입력해 주세요.');return;}
-  if(!sel){alert('희망 날짜를 선택해 주세요.');return;}
-  if(!phone){alert('연락처를 입력해 주세요.');return;}
-  window.open('https://forms.gle/MJFvp3ec8xvFnnWC9','_blank');
-}
-</script>
 </body>
 </html>
